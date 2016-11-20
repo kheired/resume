@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <link rel="stylesheet" href="./css/reset.min.css"/>
+    <link rel="stylesheet" href="./css/jianli.css"/>
+    <link rel="stylesheet" href="./css/animate.css"/>
+    <link rel="stylesheet" href="./css/swiper.min.css"/>
+
+    <script type="text/javascript">
+        /*         移动适配方案       */
+        var desW=640;
+        var winW=document.documentElement.clientWidth;
+        document.documentElement.style.fontSize=winW/desW*100+'px';
+    </script>
+</head>
+<body>
+<section class="main">
+    <div class="music">
+        <!-- 音乐版块-->
+        <audio src="./audio/beyond.mp3" loop preload="none" id="beyond"></audio>
+        <!--preload="none"  不提前进行预加载
+                      auto      提前进行预加载
+         -->
+    </div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide slide1">1
+                <!-- 真1-->
+                <img src="./img/need1.png" alt=""/>
+                <img src="./img/need2.png" alt=""/>
+                <img src="./img/need3.png" alt=""/>
+                <div><span>做最好的自己</span></div>
+                <div><span>你是独一无二的</span></div>
+            </div>
+            <div class="swiper-slide slide2">2
+                <!--真2-->
+                <img src="./img/mx.png" alt=""/>
+                <span>肯吃苦耐劳</span>
+                <span>有自主学习能力</span>
+                <span>有团队协作</span>
+                <span>精神</span>
+                <span>热爱学习</span>
+                <span>有过硬的原生JS基础</span>
+                <span>良好的沟通能力</span>
+                <span>成为</span>
+                <span>顶尖</span>
+                <span>的</span>
+                <span>牛X的</span>
+                <span>前端攻城狮</span>
+                <!--<img src="./img/swiper/page2-text2.png" alt=""/>-->
+                <!--<img src="./img/swiper/page2-text3.png" alt=""/>-->
+                <!--<img src="./img/swiper/page2-text4.png" alt=""/>-->
+            </div>
+            <div class="swiper-slide slide3">3
+                <p>我的技能</p>
+            </div>
+            <div class="swiper-slide slide4">4
+                <img src="./img/jn.png" alt="">
+            </div>
+            <div class="swiper-slide slide5">5</div>
+            <div class="swiper-slide slide6">6
+                <img src="./img/gif2.gif" alt="">
+                <img src="./img/ma.png" alt="">
+                <img src="./img/zbhl.png" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+<html>
+<script src="./js/swiper.min.js"></script>
+<script type="text/javascript">
+    var mySwiper=new Swiper(".swiper-container",{
+        direction:'vertical',
+        loop:true,
+        onTransitionEnd:function(swiper){
+            var slides=swiper.slides;       //获取所有滑块
+            var curIndex=swiper.activeIndex;//获取当前滑块的索引
+            var lastSlideIndex=slides.length-1;//现在最后一个滑块的索引  3
+            var trueSlideIndex=slides.length-2;//原来最后一个滑块的索引  2
+//            把原来的第一个滑块复制一份放在最后
+//            把原来的最后一个滑块复制一份放在最前
+            [].forEach.call(slides,function(item,index){
+                item.id='';
+                if(curIndex==index){
+                    switch (index){
+                        case 0://第一个滑块，就是，第三个滑块  page2
+                            item.id="page"+trueSlideIndex;
+                            break;
+                        case lastSlideIndex://最后一个滑块，就是，原先第一个滑块  page1
+                            item.id='page1';
+                            break;
+                        default :
+                            item.id='page'+curIndex;
+                            break;
+                    }
+                }
+            })
+        }
+    });
+
+    
+
+    var music=document.querySelector('.music');
+    var beyond=document.querySelector('#beyond');
+    window.setTimeout(function(){
+        beyond.play();
+        beyond.addEventListener('canplay',function(){
+            music.className='music musicCur';
+        },false)
+    },1000);
+    music.addEventListener('click',function(){
+//        paused属性判断音屏文件是播放的还是停止的
+//        让音频文件播放play();停止时pause();
+        if(beyond.paused){
+            beyond.play();
+            music.className='music musicCur';
+        }else{
+            beyond.pause();
+            music.className='music';
+            music.style.opacity=1;
+        }
+    },false)
+
+
+</script>
