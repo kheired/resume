@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head lang="en">
     <meta charset="UTF-8">
@@ -6,15 +6,15 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <link rel="stylesheet" href="./css/reset.min.css"/>
-    <link rel="stylesheet" href="./css/jianli.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
     <link rel="stylesheet" href="./css/animate.css"/>
     <link rel="stylesheet" href="./css/swiper.min.css"/>
 
     <script type="text/javascript">
         /*         移动适配方案       */
-        var desW=640;
-        var winW=document.documentElement.clientWidth;
-        document.documentElement.style.fontSize=winW/desW*100+'px';
+        var desW = 640;
+        var winW = document.documentElement.clientWidth;
+        document.documentElement.style.fontSize = winW / desW * 100 + 'px';
     </script>
 </head>
 <body>
@@ -33,11 +33,14 @@
                 <img src="./img/need1.png" alt=""/>
                 <img src="./img/need2.png" alt=""/>
                 <img src="./img/need3.png" alt=""/>
-                <div><span>做最好的自己</span></div>
-                <div><span>你是独一无二的</span></div>
+                <img src="./img/ge.png" alt="">
+                <img src="./img/ren.png" alt="">
+                <img src="./img/jian.png" alt="">
+                <img src="./img/li.png" alt="">
+                <p>做最好的自己</p>
+                <p>你是独一无二的</p>
             </div>
             <div class="swiper-slide slide2">2
-                <!--真2-->
                 <img src="./img/mx.png" alt=""/>
                 <span>肯吃苦耐劳</span>
                 <span>有自主学习能力</span>
@@ -51,21 +54,38 @@
                 <span>的</span>
                 <span>牛X的</span>
                 <span>前端攻城狮</span>
-                <!--<img src="./img/swiper/page2-text2.png" alt=""/>-->
-                <!--<img src="./img/swiper/page2-text3.png" alt=""/>-->
-                <!--<img src="./img/swiper/page2-text4.png" alt=""/>-->
             </div>
             <div class="swiper-slide slide3">3
                 <p>我的技能</p>
+                <p>熟悉H5/CSS3标准，熟悉JavaScript前端开发</p>
+                <p>两年Web开发经验，熟悉jQuery等</p>
+                <p>能驾驭XHTML/XMLCSS、AJAX等</p>
+                <p>熟悉W3C标准，熟悉对象化JavaScript编程</p>
+                <p>熟悉NODE.JS可以用NODE搭建简易的后台</p>
             </div>
             <div class="swiper-slide slide4">4
-                <img src="./img/jn.png" alt="">
+                <p>关于我</p>
+                <p>姓名</p>
+                <p>何小东</p>
+                <p>25岁</p>
+                <p>汉 子 一 枚</p>
+                <p>来自浙江金华</p>
+                <p>2013年毕业于浙江工商大学杭州商学院，干过测绘；有缘得见一个轮播图，见证其从无到有的过程，深感震撼，十分着迷，从此便一发不可收拾...所以我出现在这里，希望以后能与前端大神一起工作。</p>
+
             </div>
-            <div class="swiper-slide slide5">5</div>
+            <div class="swiper-slide slide5">5
+                <div>项目经历</div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
             <div class="swiper-slide slide6">6
                 <img src="./img/gif2.gif" alt="">
                 <img src="./img/ma.png" alt="">
                 <img src="./img/zbhl.png" alt="">
+                <p>何小东</p>
+                <p>手机 13758272280</p>
+                <p>邮箱 644417782@qq.com</p>
             </div>
         </div>
     </div>
@@ -74,28 +94,26 @@
 <html>
 <script src="./js/swiper.min.js"></script>
 <script type="text/javascript">
-    var mySwiper=new Swiper(".swiper-container",{
-        direction:'vertical',
-        loop:true,
-        onTransitionEnd:function(swiper){
-            var slides=swiper.slides;       //获取所有滑块
-            var curIndex=swiper.activeIndex;//获取当前滑块的索引
-            var lastSlideIndex=slides.length-1;//现在最后一个滑块的索引  3
-            var trueSlideIndex=slides.length-2;//原来最后一个滑块的索引  2
-//            把原来的第一个滑块复制一份放在最后
-//            把原来的最后一个滑块复制一份放在最前
-            [].forEach.call(slides,function(item,index){
-                item.id='';
-                if(curIndex==index){
-                    switch (index){
-                        case 0://第一个滑块，就是，第三个滑块  page2
-                            item.id="page"+trueSlideIndex;
+    var mySwiper = new Swiper(".swiper-container", {
+        direction: 'vertical',
+        loop: true,
+        onTransitionEnd: function (swiper) {
+            var slides = swiper.slides;
+            var curIndex = swiper.activeIndex;
+            var lastSlideIndex = slides.length - 1;
+            var trueSlideIndex = slides.length - 2;
+            [].forEach.call(slides, function (item, index) {
+                item.id = '';
+                if (curIndex == index) {
+                    switch (index) {
+                        case 0:
+                            item.id = "page" + trueSlideIndex;
                             break;
-                        case lastSlideIndex://最后一个滑块，就是，原先第一个滑块  page1
-                            item.id='page1';
+                        case lastSlideIndex:
+                            item.id = 'page1';
                             break;
                         default :
-                            item.id='page'+curIndex;
+                            item.id = 'page' + curIndex;
                             break;
                     }
                 }
@@ -103,28 +121,25 @@
         }
     });
 
-    
 
-    var music=document.querySelector('.music');
-    var beyond=document.querySelector('#beyond');
-    window.setTimeout(function(){
+    var music = document.querySelector('.music');
+    var beyond = document.querySelector('#beyond');
+    window.setTimeout(function () {
         beyond.play();
-        beyond.addEventListener('canplay',function(){
-            music.className='music musicCur';
-        },false)
-    },1000);
-    music.addEventListener('click',function(){
-//        paused属性判断音屏文件是播放的还是停止的
-//        让音频文件播放play();停止时pause();
-        if(beyond.paused){
+        beyond.addEventListener('canplay', function () {
+            music.className = 'music musicCur';
+        }, false)
+    }, 1000);
+    music.addEventListener('click', function () {
+        if (beyond.paused) {
             beyond.play();
-            music.className='music musicCur';
-        }else{
+            music.className = 'music musicCur';
+        } else {
             beyond.pause();
-            music.className='music';
-            music.style.opacity=1;
+            music.className = 'music';
+            music.style.opacity = 1;
         }
-    },false)
+    }, false)
 
 
 </script>
